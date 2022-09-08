@@ -98,7 +98,7 @@ def read_table(filename):
 def write_table(table, filename):
     outfile = open(filename, "w")
 
-    writer = csv.writer(filename)
+    writer = csv.writer(outfile)
     writer.writerows(table)
     
     outfile.close()
