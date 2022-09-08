@@ -1,3 +1,1 @@
-print("Hello")
-
-print("World")
+import hello_world
