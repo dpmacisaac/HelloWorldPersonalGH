@@ -108,3 +108,66 @@ table = read_table("data.csv")
 print(table)
 
 write_table(table, "data_copy.csv")
+
+
+def add_one(table):
+    for i in range(len(table)):
+        for j in range(len(table[i])):
+            table[i][j] += 1
+
+
+print("matrix before:", matrix)
+add_one(matrix)
+print("matrix after:", matrix)
+
+def clear_out(table):
+    table = []
+print("matrix before:", matrix)
+clear_out(matrix)
+print("matrix after:", matrix)
+
+#Python is pass by object reference
+# object references are passed by value (copied)
+
+#shallow vs deep copy
+#shallow copy copies the object references not the objects themselves
+matrix_copy = matrix.copy
+
+#Classes
+#class: a collection of state and behavior that completely describe something
+#object: an instance of a class 
+class Subject:
+    """Represent a human subject in a research study.
+
+    Attributes:
+        sid(int): unique id number for the subject
+        name(str): name of the subject
+        measurements(dict of str:float):stores the timestamp:
+            value measurements collected from the subject during
+            the study
+
+        num_subjects(int): class-level attributes stroing the
+            total number of subjects in the study
+    """
+
+    num_subjects = 0
+    # one num_subjects variable that is shared amongst all
+    # subject objects
+    # do NOT declare instance level attributes here
+
+    #special method __init__(self)
+
+    def __init__(self):
+        Subject.num_subjects += 1
+
+    def __str__(self):
+        pass
+
+    def display_num_subjects():
+        print("num subs:", Subject.num_subjects)
+
+Subject.display_num_subjects()
+sub1 = Subject()
+Subject.display_num_subjects()
+sub2 = Subject()
+Subject.display_num_subjects()
