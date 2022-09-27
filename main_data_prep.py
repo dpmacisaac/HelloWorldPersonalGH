@@ -50,6 +50,7 @@ def main():
 
 
     assert np.isclose(standard_dev,np.std(msrps))
+    
 
 if __name__ == "__main__":
     main()
