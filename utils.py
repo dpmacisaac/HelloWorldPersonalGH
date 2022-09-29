@@ -22,6 +22,31 @@ def get_frequencies (table, header, col_name):
             count[-1] += 1
 
     return values,count
+
     
 def dummy_def(x):
     print(str(x * 19),"dummies")
+
+
+def group_by(table, header, group_by_col_name):
+    group_by_col = get_column(table, header, group_by_col_name)
+    group_by_col_index = header.index(group_by_col_name)
+
+    group_names = sorted(list(set(group_by_col))) # eg [75,76,77]
+
+    group_subtables = [[] for __ in group_names] # create list of len(groupnames) empty lists
+
+    for row in table:
+        group_by_val = row[group_by_col_index]
+        subtable_index = group_names.index(group_by_val)
+        group_subtables[subtable_index].append(row)
+
+    return group_names, group_subtables
+
+def comput_equal_width_cutoffs(values,num_bins):
+    values_range = max(values) - min(values)
+    bin_width = values_range/num_bins
+    cutoffs = list(np.arrange(min(values),max(values), bin_width))
+    cutoffs.append(max(values))
+    cutoffs = [round(cutoff,2) for cutoff in cutoffs]
+    return cutoffs
