@@ -50,3 +50,13 @@ def comput_equal_width_cutoffs(values,num_bins):
     cutoffs.append(max(values))
     cutoffs = [round(cutoff,2) for cutoff in cutoffs]
     return cutoffs
+
+def compute_slope_intercept(x,y):
+    meanx = np.mean(x)
+    meany = np.mean(y)
+
+    m = sum([(x[i]-meanx)*(y[i]-meany) for i in range(len(x))])/ \
+        sum([(x[i]-meanx)** 2 for i in range(len(x))])
+    # y = mx + b => b = y-mx
+    b = meany-m* meanx
+    return m,b
