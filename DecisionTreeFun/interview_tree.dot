@@ -1,0 +1,19 @@
+graph g{
+    // declare a node for level
+    level [shape=box];
+    phd [shape=box];
+        true1[shape="circle", label= "true"];
+        false1[shape="circle",label= "false"];
+    true2[shape="circle",label= "true"];
+    tweets[shape=box];
+        true3[shape="circle",label= "true"];
+        false3[shape="circle",label= "false"];
+
+    level--phd [label="Junior"];
+        phd--true1 [label="no"];    
+        phd--false1 [label="yes"];   
+    level--true2 [label="Mid"];
+    level--tweets [label="Senior"];
+        tweets--true3 [label="yes"];    
+        tweets--false3 [label="no"]; 
+}
